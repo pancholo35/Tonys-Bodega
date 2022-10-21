@@ -1,0 +1,31 @@
+{
+  "name": "tonys-bodega",
+  "version": "1.0.0",
+  "description": "## Date: 10/19/2022",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pancholo35/Tonys-Bodega.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pancholo35/Tonys-Bodega/issues"
+  },
+  "homepage": "https://github.com/pancholo35/Tonys-Bodega#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "mongoose": "^6.6.5",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
