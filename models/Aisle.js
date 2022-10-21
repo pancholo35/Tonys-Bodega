@@ -1,7 +1,6 @@
-const mongoose = require('mongoose')
-const Schema = mongoose.Schema
+const { Schema } = require('mongoose')
 
-const Aisle = new Schema(
+const aisleSchema = new Schema(
   {
     aisle_number: { type: Number, required: true },
     shelves: { type: Array, required: true }
@@ -9,4 +8,4 @@ const Aisle = new Schema(
   { timestamps: true }
 )
 
-module.exports = mongoose.model('Aisle', Aisle)
+module.exports = aisleSchema
