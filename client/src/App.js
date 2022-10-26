@@ -23,7 +23,14 @@ const App = () => {
             path="/aisle/shelf"
             element={<Shelf aisle_data={relData} setRelData={setRelData} />}
           />
-          <Route path="/aisle/shelf/product/create" element={<Form />} />
+          <Route
+            path="/aisle/shelf/product/create"
+            element={<Form isUpdate={false} />}
+          />
+          <Route
+            path="/aisle/shelf/product/:id/update"
+            element={<Form product_data={relData} isUpdate={true} />}
+          />
         </Routes>
       </main>
     </div>

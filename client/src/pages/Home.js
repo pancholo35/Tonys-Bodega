@@ -5,7 +5,7 @@ const Home = () => {
 
   return (
     <div>
-      <h3>Tony's muthafukin' Bodega</h3>
+      <h3>Tony's Bodega</h3>
       <button type="button" onClick={() => navigate('aisle')}>
         OPEN FOR BUSINESS
       </button>
