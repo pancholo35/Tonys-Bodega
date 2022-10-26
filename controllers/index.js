@@ -31,7 +31,7 @@ const getAisle = async (req, res) => {
   try {
     const { num } = req.params
     const aisle = await Aisle.find({ aisle_number: num })
-    return res.status(200).json({ aisle })
+    return res.status(200).send(...aisle)
   } catch (error) {
     return res.status(500).json({ error: error.message })
   }
