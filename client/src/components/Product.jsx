@@ -1,7 +1,9 @@
+import axios from 'axios'
+
 const Product = (props) => {
-  const handleClick = (action) => {
+  const handleClick = async (action) => {
     if (action === 'update') {
-      console.log('im updating...')
+      //let response = await axios.get(`http://localhost:3001/aisle/shelf/product/${props}`)
     } else if (action === 'delete') {
       console.log('im melting! melttiiiinnnnnggggg...')
     }
