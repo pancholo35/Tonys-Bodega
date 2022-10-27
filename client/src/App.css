@@ -44,3 +44,21 @@ form {
   width: fit-content;
   color: white;
 }
+
+.product-list-body {
+  margin: 10px;
+}
+
+.product-listing {
+  padding-bottom: 5px;
+  border-top: 2px solid lightgray;
+  border-bottom: 2px solid lightgray;
+}
+
+.product {
+  display: flex;
+}
+
+#create-button {
+  margin: 10px;
+}

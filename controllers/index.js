@@ -69,6 +69,17 @@ const createProduct = async (req, res) => {
   }
 }
 
+const updateProduct = async (req, res) => {
+  try {
+    const product = await Product.findByIdAndUpdate(req.params.id, req.body, {
+      new: true
+    })
+    res.status(200).json(product)
+  } catch (error) {
+    return res.status(500).json({ error: error.message })
+  }
+}
+
 module.exports = {
   getAllAisles,
   getAllShelves,
@@ -76,5 +87,6 @@ module.exports = {
   getAisle,
   getShelf,
   getProduct,
-  createProduct
+  createProduct,
+  updateProduct
 }

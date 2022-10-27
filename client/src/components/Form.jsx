@@ -1,25 +1,41 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 
 const Form = (props) => {
-  const initialState = {
-    name: '',
-    brand: '',
-    price: 0,
-    image: '',
-    product_link: ''
+  const navigate = useNavigate()
+
+  let initialState = {
+    name: props.product_data.name,
+    brand: props.product_data.brand,
+    price: props.product_data.price,
+    image: props.product_data.image,
+    product_link: props.product_data.product_link
   }
+
   const [formState, setFormState] = useState(initialState)
 
   const handleSubmit = async (event) => {
     event.preventDefault()
-    let res = await axios.post(
-      'http://localhost:3001/aisle/shelf/product/create',
-      formState
-    )
-    console.log(res.data)
-    setFormState(initialState)
-    //props.getIssues()
+    if (!props.update) {
+      await axios.post(
+        'http://localhost:3001/aisle/shelf/product/create',
+        formState
+      )
+    } else {
+      await axios.post(
+        `http://localhost:3001/aisle/shelf/product/${props.product_data._id}/update`,
+        formState
+      )
+      props.setFormToggle(false)
+    }
+    setFormState({
+      name: '',
+      brand: '',
+      price: '',
+      image: '',
+      product_link: ''
+    })
   }
 
   const handleChange = (event) => {

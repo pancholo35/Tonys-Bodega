@@ -8,6 +8,8 @@ router.post('/aisle/shelf/product/create', controllers.createProduct)
 
 router.get('/aisle/shelf/product/:id', controllers.getProduct)
 
+router.post('/aisle/shelf/product/:id/update', controllers.updateProduct)
+
 router.get('/aisle/shelf/:num', controllers.getShelf)
 
 router.get('/aisle/:num', controllers.getAisle)

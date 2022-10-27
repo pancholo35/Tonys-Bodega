@@ -16,17 +16,20 @@ const Shelf = (props) => {
   }
 
   return selectedShelf ? (
-    <div>
-      <Product
-        products={selectedShelf.products}
-        setRelData={props.setRelData}
-      />
-      <button type="button" onClick={handleClick}>
+    <div className="product-list-body">
+      {selectedShelf.products &&
+        selectedShelf.products.map((product) => (
+          <div className="product-listing" key={product.product_id}>
+            <p>{product.quantity}x </p>
+            <Product product={product} setRelData={props.setRelData} />
+          </div>
+        ))}
+      <button id="create-button" type="button" onClick={handleClick}>
         Create a product?
       </button>
     </div>
   ) : (
-    <div>
+    <div className="shelf-list">
       <h1>
         {props.aisle_data &&
           props.aisle_data.shelves.map((shelf) => (

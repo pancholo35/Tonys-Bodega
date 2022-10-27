@@ -8,7 +8,8 @@ import Home from './pages/Home'
 import Shelf from './pages/Shelf'
 
 const App = () => {
-  const [relData, setRelData] = useState(null)
+  const [aisleData, setAisleData] = useState(null)
+  const [productData, setProductData] = useState(null)
 
   return (
     <div className="App">
@@ -18,18 +19,16 @@ const App = () => {
       <main>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/aisle" element={<Aisle setRelData={setRelData} />} />
+          <Route path="/aisle" element={<Aisle setRelData={setAisleData} />} />
           <Route
             path="/aisle/shelf"
-            element={<Shelf aisle_data={relData} setRelData={setRelData} />}
+            element={
+              <Shelf aisle_data={aisleData} setRelData={setProductData} />
+            }
           />
           <Route
             path="/aisle/shelf/product/create"
-            element={<Form isUpdate={false} />}
-          />
-          <Route
-            path="/aisle/shelf/product/:id/update"
-            element={<Form product_data={relData} isUpdate={true} />}
+            element={<Form update={false} />}
           />
         </Routes>
       </main>
