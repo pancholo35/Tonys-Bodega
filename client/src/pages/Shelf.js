@@ -51,7 +51,7 @@ const Shelf = (props) => {
         {props.aisle_data &&
           props.aisle_data.shelves.map((shelf) => (
             <button key={shelf.shelf_number} onClick={() => handleClick(shelf)}>
-              {shelf.shelf_number}
+              Shelf #{shelf.shelf_number}
             </button>
           ))}
       </h1>
