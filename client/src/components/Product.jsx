@@ -27,7 +27,7 @@ const Product = (props) => {
           ))
         : console.log('Delete Operation Cancelled')
 
-      props.setSelectedShelf(response)
+      props.setSelectedShelf(response.data)
     }
   }
 
