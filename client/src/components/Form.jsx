@@ -35,10 +35,9 @@ const Form = (props) => {
         `http://localhost:3001/aisle/shelf/${num}/product/create/${counter}`,
         formState
       )
-      navigate(-1)
-      console.log(res)
-      props.setProductData(res.data[0])
       props.setShelfData(res.data[1])
+      props.setProductData(res.data[0])
+      navigate(-1)
     } else {
       res = await axios.post(
         `http://localhost:3001/aisle/shelf/${props.selectedShelf.shelf_number}/product/${props.product_data._id}/update/${counter}`,
