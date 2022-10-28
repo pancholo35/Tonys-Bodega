@@ -8,8 +8,7 @@ const Shelf = (props) => {
 
   const handleClick = (shelf) => {
     if (selectedShelf) {
-      setSelectedShelf(null)
-      navigate('product/create')
+      navigate(`${selectedShelf.shelf_number}/product/create`)
     } else {
       setSelectedShelf(shelf)
       !props.product_data &&

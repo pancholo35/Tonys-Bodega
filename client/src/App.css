@@ -69,3 +69,8 @@ form {
 #product-quantity {
   text-align: right;
 }
+
+#quantity-counter {
+  display: flex;
+  justify-content: space-around;
+}

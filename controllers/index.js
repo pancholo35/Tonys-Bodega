@@ -60,10 +60,53 @@ const getProduct = async (req, res) => {
 const createProduct = async (req, res) => {
   try {
     const product = await new Product(req.body)
+    const shelf = await Shelf.findOne({ shelf_number: req.params.num })
+    if (req.params.quantity > 0) {
+      shelf.products.push({
+        quantity: req.params.quantity,
+        product_id: product._id
+      })
+    }
+
+    await Shelf.updateOne(
+      { shelf_number: req.params.num },
+      {
+        $set: { products: shelf.products },
+        $currentDate: { lastModified: true }
+      }
+    )
+
+    if (req.params.num <= 10) {
+      const shelves = await Shelf.find()
+      console.log(shelves)
+      await Aisle.updateOne(
+        { aisle_number: 1 },
+        {
+          $set: { shelves: shelves.slice(0, 10) },
+          $currentDate: { lastModified: true }
+        }
+      )
+    } else if (req.params.num <= 20) {
+      const shelves = await Shelf.find()
+      await Aisle.updateOne(
+        { aisle_number: 2 },
+        {
+          $set: { shelves: shelves.slice(10, 20) },
+          $currentDate: { lastModified: true }
+        }
+      )
+    } else {
+      const shelves = await Shelf.find()
+      await Aisle.updateOne(
+        { aisle_number: 3 },
+        {
+          $set: { shelves: shelves.slice(20) },
+          $currentDate: { lastModified: true }
+        }
+      )
+    }
     await product.save()
-    return res.status(201).json({
-      product
-    })
+    return res.status(201).json(product)
   } catch (error) {
     return res.status(500).json({ error: error.message })
   }
@@ -74,7 +117,54 @@ const updateProduct = async (req, res) => {
     const product = await Product.findByIdAndUpdate(req.params.id, req.body, {
       new: true
     })
-    res.status(200).json(product)
+    const shelf = await Shelf.findOne({ shelf_number: req.params.num })
+
+    if (req.params.quantity > 0) {
+      shelf.products.forEach((product, i) => {
+        if (product.product_id == req.params.id) {
+          shelf.products[i].quantity = req.params.quantity
+        }
+      })
+    }
+
+    await Shelf.updateOne(
+      { shelf_number: req.params.num },
+      {
+        $set: { products: shelf.products },
+        $currentDate: { lastModified: true }
+      }
+    )
+
+    if (req.params.num <= 10) {
+      const shelves = await Shelf.find()
+      console.log(shelves)
+      await Aisle.updateOne(
+        { aisle_number: 1 },
+        {
+          $set: { shelves: shelves.slice(0, 10) },
+          $currentDate: { lastModified: true }
+        }
+      )
+    } else if (req.params.num <= 20) {
+      const shelves = await Shelf.find()
+      await Aisle.updateOne(
+        { aisle_number: 2 },
+        {
+          $set: { shelves: shelves.slice(10, 20) },
+          $currentDate: { lastModified: true }
+        }
+      )
+    } else {
+      const shelves = await Shelf.find()
+      await Aisle.updateOne(
+        { aisle_number: 3 },
+        {
+          $set: { shelves: shelves.slice(20) },
+          $currentDate: { lastModified: true }
+        }
+      )
+    }
+    return res.status(200).send([product, shelf])
   } catch (error) {
     return res.status(500).json({ error: error.message })
   }

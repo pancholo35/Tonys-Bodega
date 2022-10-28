@@ -55,6 +55,9 @@ const Product = (props) => {
               update={true}
               setFormToggle={setFormToggle}
               setProduct={setProduct}
+              selectedShelf={props.selectedShelf}
+              setSelectedShelf={props.setSelectedShelf}
+              product_quantity={props.product.quantity}
             />
           )}
         </section>

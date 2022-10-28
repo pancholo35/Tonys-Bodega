@@ -1,7 +1,10 @@
 import { useState } from 'react'
+import { useParams } from 'react-router-dom'
 import axios from 'axios'
 
 const Form = (props) => {
+  const { num } = useParams()
+  let initCounter = props.update ? parseInt(props.product_quantity) : 0
   let initialState = {
     name: props.product_data.name,
     brand: props.product_data.brand,
@@ -11,21 +14,23 @@ const Form = (props) => {
   }
 
   const [formState, setFormState] = useState(initialState)
+  const [counter, setCounter] = useState(initCounter)
 
   const handleSubmit = async (event) => {
     event.preventDefault()
     let res
     if (!props.update) {
       await axios.post(
-        'http://localhost:3001/aisle/shelf/product/create',
+        `http://localhost:3001/aisle/shelf/${num}/product/create/${counter}`,
         formState
       )
     } else {
       res = await axios.post(
-        `http://localhost:3001/aisle/shelf/product/${props.product_data._id}/update`,
+        `http://localhost:3001/aisle/shelf/${props.selectedShelf.shelf_number}/product/${props.product_data._id}/update/${counter}`,
         formState
       )
-      props.setProduct(res.data)
+      props.setProduct(res.data[0])
+      props.setSelectedShelf(res.data[1])
       props.setFormToggle(false)
     }
     setFormState({
@@ -78,6 +83,15 @@ const Form = (props) => {
         value={formState.product_link}
         onChange={handleChange}
       />
+      <section id="quanity-counter">
+        <button type="button" onClick={() => setCounter(counter + 1)}>
+          +
+        </button>
+        {counter && counter}
+        <button type="button" onClick={() => setCounter(counter - 1)}>
+          -
+        </button>
+      </section>
       <button type="submit">Send</button>
     </form>
   )

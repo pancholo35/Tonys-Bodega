@@ -4,15 +4,21 @@ const router = Router()
 
 router.get('/', (req, res) => res.send('This is root!'))
 
-router.post('/aisle/shelf/product/create', controllers.createProduct)
-
 router.get('/aisle/shelf/product/:id', controllers.getProduct)
-
-router.post('/aisle/shelf/product/:id/update', controllers.updateProduct)
 
 router.delete('/aisle/shelf/product/:id/delete', controllers.deleteProduct)
 
 router.get('/aisle/shelf/:num', controllers.getShelf)
+
+router.post(
+  '/aisle/shelf/:num/product/create/:quantity',
+  controllers.createProduct
+)
+
+router.post(
+  '/aisle/shelf/:num/product/:id/update/:quantity',
+  controllers.updateProduct
+)
 
 router.delete(
   '/aisle/shelf/:num/product/:id/delete',
