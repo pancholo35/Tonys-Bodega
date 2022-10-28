@@ -6,7 +6,7 @@ const Form = (props) => {
   const { num } = useParams()
   const navigate = useNavigate()
 
-  let initCounter = props.update ? parseInt(props.product_quantity) : 0
+  let initCounter = props.update ? parseInt(props.product_quantity) : 1
 
   let initialState = props.update
     ? {
@@ -37,8 +37,8 @@ const Form = (props) => {
       )
       navigate(-1)
       console.log(res)
-      props.setProduct(res.data[0])
-      props.setSelectedShelf(res.data[1])
+      props.setProductData(res.data[0])
+      props.setShelfData(res.data[1])
     } else {
       res = await axios.post(
         `http://localhost:3001/aisle/shelf/${props.selectedShelf.shelf_number}/product/${props.product_data._id}/update/${counter}`,

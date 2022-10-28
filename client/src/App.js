@@ -9,6 +9,7 @@ import Shelf from './pages/Shelf'
 
 const App = () => {
   const [aisleData, setAisleData] = useState(null)
+  const [shelfData, setShelfData] = useState(null)
   const [productData, setProductData] = useState(null)
 
   return (
@@ -29,13 +30,20 @@ const App = () => {
               <Shelf
                 aisle_data={aisleData}
                 product_data={productData}
+                shelf_data={shelfData}
                 setProductData={setProductData}
               />
             }
           />
           <Route
             path="/aisle/shelf/:num/product/create"
-            element={<Form update={false} />}
+            element={
+              <Form
+                setProductData={setProductData}
+                setShelfData={setShelfData}
+                update={false}
+              />
+            }
           />
         </Routes>
       </main>

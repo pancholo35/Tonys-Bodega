@@ -4,7 +4,10 @@ import Product from '../components/Product'
 
 const Shelf = (props) => {
   const navigate = useNavigate()
-  const [selectedShelf, setSelectedShelf] = useState(null)
+
+  let initialState = props.shelf_data ? props.shelf_data : null
+
+  const [selectedShelf, setSelectedShelf] = useState(initialState)
 
   const handleClick = (shelf) => {
     if (selectedShelf) {
