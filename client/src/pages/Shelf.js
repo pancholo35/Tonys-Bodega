@@ -19,14 +19,17 @@ const Shelf = (props) => {
 
   return selectedShelf ? (
     <div className="product-list-body">
+      <h1>Shelf #{selectedShelf && selectedShelf.shelf_number}</h1>
       {selectedShelf.products &&
         selectedShelf.products.map((product) => (
           <div className="product-listing" key={product.product_id}>
-            <p>{product.quantity}x </p>
+            <p id="product-quantity">{product.quantity}x</p>
             <Product
               product={product}
               product_data={props.product_data}
               setProductData={props.setProductData}
+              selectedShelf={selectedShelf}
+              setSelectedShelf={setSelectedShelf}
             />
           </div>
         ))}

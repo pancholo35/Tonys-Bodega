@@ -34,7 +34,7 @@ const App = () => {
             }
           />
           <Route
-            path="/aisle/shelf/product/create"
+            path="/aisle/shelf/:num/product/create"
             element={<Form update={false} />}
           />
         </Routes>

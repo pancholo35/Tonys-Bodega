@@ -13,17 +13,27 @@ const Product = (props) => {
     setProduct(response.data.product)
   }
 
-  const handleClick = (action) => {
+  const handleClick = async (action) => {
     if (action === 'update') {
       setFormToggle(true)
     } else if (action === 'delete') {
-      console.log('im melting! melttiiiinnnnnggggg...')
+      let response
+      const isDeleted = window.confirm(
+        `Are you sure you want to delete this product from this shelf? (shelf ${props.selectedShelf.shelf_number})`
+      )
+      isDeleted
+        ? (response = await axios.delete(
+            `http://localhost:3001/aisle/shelf/${props.selectedShelf.shelf_number}/product/${props.product.product_id}/delete`
+          ))
+        : console.log('Delete Operation Cancelled')
+
+      props.setSelectedShelf(response)
     }
   }
 
   useEffect(() => {
     getProduct()
-  }, [])
+  }, [props.selectedShelf])
 
   return (
     <div>

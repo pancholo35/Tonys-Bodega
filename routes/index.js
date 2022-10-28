@@ -10,7 +10,14 @@ router.get('/aisle/shelf/product/:id', controllers.getProduct)
 
 router.post('/aisle/shelf/product/:id/update', controllers.updateProduct)
 
+router.delete('/aisle/shelf/product/:id/delete', controllers.deleteProduct)
+
 router.get('/aisle/shelf/:num', controllers.getShelf)
+
+router.delete(
+  '/aisle/shelf/:num/product/:id/delete',
+  controllers.deleteShelfProduct
+)
 
 router.get('/aisle/:num', controllers.getAisle)
 
