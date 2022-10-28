@@ -19,11 +19,18 @@ const App = () => {
       <main>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/aisle" element={<Aisle setRelData={setAisleData} />} />
+          <Route
+            path="/aisle"
+            element={<Aisle setAisleData={setAisleData} />}
+          />
           <Route
             path="/aisle/shelf"
             element={
-              <Shelf aisle_data={aisleData} setRelData={setProductData} />
+              <Shelf
+                aisle_data={aisleData}
+                product_data={productData}
+                setProductData={setProductData}
+              />
             }
           />
           <Route

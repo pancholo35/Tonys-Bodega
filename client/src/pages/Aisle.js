@@ -6,7 +6,7 @@ const Aisles = (props) => {
 
   const getAisle = async (num) => {
     let response = await axios.get(`http://localhost:3001/aisle/${num}`)
-    props.setRelData(response.data)
+    props.setAisleData(response.data)
     navigate('shelf')
   }
 

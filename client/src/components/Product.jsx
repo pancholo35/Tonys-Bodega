@@ -15,7 +15,6 @@ const Product = (props) => {
 
   const handleClick = (action) => {
     if (action === 'update') {
-      props.setRelData(product)
       setFormToggle(true)
     } else if (action === 'delete') {
       console.log('im melting! melttiiiinnnnnggggg...')
@@ -45,6 +44,7 @@ const Product = (props) => {
               product_data={product}
               update={true}
               setFormToggle={setFormToggle}
+              setProduct={setProduct}
             />
           )}
         </section>

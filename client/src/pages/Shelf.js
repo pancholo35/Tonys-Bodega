@@ -12,6 +12,8 @@ const Shelf = (props) => {
       navigate('product/create')
     } else {
       setSelectedShelf(shelf)
+      !props.product_data &&
+        props.setProductData(selectedShelf && selectedShelf.products)
     }
   }
 
@@ -21,7 +23,11 @@ const Shelf = (props) => {
         selectedShelf.products.map((product) => (
           <div className="product-listing" key={product.product_id}>
             <p>{product.quantity}x </p>
-            <Product product={product} setRelData={props.setRelData} />
+            <Product
+              product={product}
+              product_data={props.product_data}
+              setProductData={props.setProductData}
+            />
           </div>
         ))}
       <button id="create-button" type="button" onClick={handleClick}>
