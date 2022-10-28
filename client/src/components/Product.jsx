@@ -19,13 +19,15 @@ const Product = (props) => {
     } else if (action === 'delete') {
       let response
       const isDeleted = window.confirm(
-        `Are you sure you want to delete this product from this shelf? (shelf ${props.selectedShelf.shelf_number})`
+        `Would you like to delete all instances of this product? (if No then only the instance in shelf #${props.selectedShelf.shelf_number} will be deleted)`
       )
       isDeleted
         ? (response = await axios.delete(
             `http://localhost:3001/aisle/shelf/${props.selectedShelf.shelf_number}/product/${props.product.product_id}/delete`
           ))
-        : console.log('Delete Operation Cancelled')
+        : (response = await axios.delete(
+            `http://localhost:3001/aisle/shelf/${props.selectedShelf.shelf_number}/product/${props.product.product_id}/delete`
+          ))
 
       props.setSelectedShelf(response.data)
     }

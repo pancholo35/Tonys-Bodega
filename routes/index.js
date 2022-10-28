@@ -6,13 +6,16 @@ router.get('/', (req, res) => res.send('This is root!'))
 
 router.get('/aisle/shelf/product/:id', controllers.getProduct)
 
-router.delete('/aisle/shelf/product/:id/delete', controllers.deleteProduct)
-
 router.get('/aisle/shelf/:num', controllers.getShelf)
 
 router.post(
   '/aisle/shelf/:num/product/create/:quantity',
   controllers.createProduct
+)
+
+router.delete(
+  '/aisle/shelf/:num/product/:id/deleteAll',
+  controllers.deleteProduct
 )
 
 router.post(

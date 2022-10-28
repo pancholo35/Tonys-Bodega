@@ -172,11 +172,11 @@ const updateProduct = async (req, res) => {
 
 const deleteProduct = async (req, res) => {
   try {
+    let shelfNumber
     const shelves = await Shelf.find()
     shelves.forEach((shelf) => {
       shelf.products.forEach(async (product, i) => {
         if (product.product_id == req.params.id) {
-          console.log('here!')
           shelf.products.splice(i, 1)
           await Shelf.updateOne(
             { _id: shelf._id },
@@ -209,8 +209,9 @@ const deleteProduct = async (req, res) => {
         $currentDate: { lastModified: true }
       }
     )
+    const returnShelf = await Shelf.findOne({ shelf_number: req.params.num })
     await Product.deleteOne({ _id: req.params.id })
-    res.status(200).send(shelves)
+    res.status(200).send(returnShelf)
   } catch (error) {
     return res.status(500).json({ error: error.message })
   }

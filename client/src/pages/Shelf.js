@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Product from '../components/Product'
 
@@ -18,6 +18,10 @@ const Shelf = (props) => {
         props.setProductData(selectedShelf && selectedShelf.products)
     }
   }
+
+  useEffect(() => {
+    return setSelectedShelf(null)
+  }, [])
 
   return selectedShelf ? (
     <div className="product-list-body">
