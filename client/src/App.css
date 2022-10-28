@@ -25,17 +25,16 @@ form {
   justify-content: space-between;
   align-items: center;
 
-  margin-bottom: 5px;
   padding: 0px 5px 0px 5px;
-  color: white;
-  background-color: black;
+  border-bottom: 5px solid rgb(72, 109, 245);
+  background-color: white;
 }
 
 .navbar a {
   text-decoration: none;
-  color: white;
+  color: red;
   font-weight: bold;
-  margin-left: 0.5em;
+  margin-right: 0.7em;
 }
 
 .links {
@@ -62,6 +61,12 @@ form {
   align-items: center;
 }
 
+.heading {
+  font-family: 'Brush Scriipt MT', cursive;
+  color: red;
+  text-align: center;
+}
+
 #create-button {
   margin: 10px;
 }
@@ -73,4 +78,33 @@ form {
 #quantity-counter {
   display: flex;
   justify-content: space-around;
+}
+
+#home-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  width: 100vw;
+  height: 100vh;
+  background-image: url(https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.pinimg.com%2Foriginals%2F70%2F90%2F5e%2F70905ede1c5de90640b272f34cbee4a5.jpg&f=1&nofb=1&ipt=d6c882f5e0b18592e7fc336ce2e103520097c7ad0fcd654dc08da8b8ce9739bc&ipo=images);
+  background-size: cover;
+}
+
+#home-title {
+  margin-top: 0;
+  padding: 2vw;
+  max-width: fit-content;
+  background-color: white;
+  border: solid 5px rgb(72, 109, 245);
+  border-radius: 4vw;
+  font-size: 5vw;
+}
+
+#home-button {
+  padding: 5px;
+  background-color: red;
+  border: 2px solid white;
+  color: white;
 }

@@ -14,7 +14,7 @@ const Aisles = (props) => {
 
   return (
     <div className="aisles">
-      <h2>Pick n aisle:</h2>
+      <h2 className="heading">Pick n aisle:</h2>
       <button type="button" onClick={() => getAisle(1)}>
         Aisle 1
       </button>

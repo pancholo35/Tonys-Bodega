@@ -39,14 +39,14 @@ const Product = (props) => {
     <div>
       <div className="product">
         <section>
-          <h1>{product && product.name}</h1>
+          <h1 className="heading">{product && product.name}</h1>
           <img
             src={product && product.image}
             alt={product && product.name}
             width="200"
             height="200"
           />
-          <h4>product id: {product && product._id}</h4>
+          <p>product id: {product && product._id}</p>
         </section>
         <section>
           {formToggle && (

@@ -46,10 +46,9 @@
 
 ### **_Future Updates_** (\*) placeholder
 
-- [ ] Future Update 1 (\*)
-- [ ] Future Update 2 (\*)
-- [x] Completed Update (\*)
-- [x] ~~Strikethrough~~ Items Also (\*)
+- [ ] Create the Show page (\*)
+- [ ] List of products to choose from when adding a product to a shelf (\*)
+- [ ] CRUD functionality from Show page (\*)
 
 ---
 

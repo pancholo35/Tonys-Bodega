@@ -36,6 +36,7 @@ const Form = (props) => {
         formState
       )
       navigate(-1)
+      console.log(res)
       props.setProduct(res.data[0])
       props.setSelectedShelf(res.data[1])
     } else {
@@ -63,9 +64,11 @@ const Form = (props) => {
   return (
     <div>
       {props.update ? (
-        <h4>Update Product on Shelf #{props.selectedShelf.shelf_number}</h4>
+        <h4 className="heading">
+          Update Product on Shelf #{props.selectedShelf.shelf_number}
+        </h4>
       ) : (
-        <h4>Create product on Shelf #{num}</h4>
+        <h4 className="heading">Create product on Shelf #{num}</h4>
       )}
       <form onSubmit={handleSubmit}>
         <label htmlFor="name">Name:</label>

@@ -4,9 +4,11 @@ const Home = () => {
   const navigate = useNavigate()
 
   return (
-    <div>
-      <h3>Tony's Bodega</h3>
-      <button type="button" onClick={() => navigate('aisle')}>
+    <div id="home-page">
+      <h1 className="heading" id="home-title">
+        Tony's Bodega
+      </h1>
+      <button id="home-button" type="button" onClick={() => navigate('aisle')}>
         OPEN FOR BUSINESS
       </button>
     </div>
